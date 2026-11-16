@@ -131,6 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok && result.ok) {
           form.reset();
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+              event_category: 'Form',
+              event_label: formHeading
+            });
+          }
           if (statusBox) {
             statusBox.textContent = 'Дякуємо! Заявку прийнято. Диспетчер ХРКВВ зателефонує вам протягом 5 хвилин.';
             statusBox.classList.add('is-success');
@@ -265,4 +271,20 @@ document.addEventListener('DOMContentLoaded', () => {
       cookieBanner.classList.remove('is-visible');
     });
   }
+  /* ------------------------------------------------------------------------
+     9. Відстеження конверсій у Google Analytics 4 (кліки по телефону та форми)
+     ------------------------------------------------------------------------ */
+  // Відстеження кліків по номерах телефонів
+  document.querySelectorAll('a[href^="tel:"]').forEach(phoneLink => {
+    phoneLink.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'phone_click', {
+          event_category: 'Contacts',
+          event_label: phoneLink.getAttribute('href')
+        });
+      }
+    });
+  });
+
+  // Відстеження успішної відправки форми (вставте всередину if (response.ok && result.ok) у блоці №3)
 });
