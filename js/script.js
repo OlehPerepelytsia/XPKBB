@@ -216,21 +216,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     6. Лайтбокс для фотогалереї
+     6. Лайтбокс для фотогалереї (виправлено для роботи з тегами <img>)
      ------------------------------------------------------------------------ */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.querySelector('.lightbox__close');
+
   document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
-      const title = item.getAttribute('data-title');
-      const desc = item.getAttribute('data-desc');
-      const imgSrc = item.querySelector('img').getAttribute('src'); // Отримуємо шлях до картинки
+      const title = item.getAttribute('data-title') || '';
+      const desc = item.getAttribute('data-desc') || '';
+      const imgTag = item.querySelector('img');
 
-      document.getElementById('lightbox-title').textContent = title;
-      document.getElementById('lightbox-desc').textContent = desc;
-      document.getElementById('lightbox-img').src = imgSrc; // Вставляємо картинку в лайтбокс
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      if (lightboxDesc) lightboxDesc.textContent = desc;
 
-      document.getElementById('lightbox').classList.add('active'); // або ваш клас відкриття
+      if (imgTag && lightboxImg) {
+        lightboxImg.src = imgTag.getAttribute('src');
+        lightboxImg.style.display = 'block';
+      } else if (lightboxImg) {
+        lightboxImg.src = '';
+        lightboxImg.style.display = 'none'; // Якщо це заглушка-іконка без картинки
+      }
+
+      if (lightbox) {
+        lightbox.classList.add('active');
+      }
     });
   });
+
+  // Закриття лайтбокса при кліку на хрестик
+  if (lightboxClose && lightbox) {
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+  }
+
+  // Закриття лайтбокса при кліку поза контентом
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+  }
 
   /* ------------------------------------------------------------------------
      7. Плавна поява блоків при скролі
@@ -264,10 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
       cookieBanner.classList.remove('is-visible');
     });
   }
+
   /* ------------------------------------------------------------------------
      9. Відстеження конверсій у Google Analytics 4 (кліки по телефону та форми)
      ------------------------------------------------------------------------ */
-  // Відстеження кліків по номерах телефонів
   document.querySelectorAll('a[href^="tel:"]').forEach(phoneLink => {
     phoneLink.addEventListener('click', () => {
       if (typeof gtag === 'function') {
@@ -278,6 +309,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // Відстеження успішної відправки форми (вставте всередину if (response.ok && result.ok) у блоці №3)
 });
