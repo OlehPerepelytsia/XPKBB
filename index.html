@@ -756,75 +756,76 @@
         </div>
       </section>
 
-      <!-- 8. Галерея/портфоліо -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <span class="badge">Наші роботи</span>
-            <h2>Галерея виконання замовлень</h2>
-            <p class="section-subtitle">
-              Приклади виїздів нашої техніки на об'єкти у Харкові та області.
-            </p>
-          </div>
-          <div class="grid-3" style="margin-bottom: 24px">
-            <!-- Правильна картка з фото -->
-            <div
-              class="gallery-item"
-              data-title="Викачування септика у приватному секторі"
-              data-desc="Робота виконана за допомогою потужної асенізаторської машини у приватному секторі Харкова."
-            >
+<!-- 8. Галерея/портфоліо -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Наші роботи</span>
+          <h2>Галерея виконання замовлень</h2>
+          <p class="section-subtitle">
+            Приклади виїздів нашої техніки на об'єкти у Харкові та області.
+          </p>
+        </div>
+        <div class="grid-3" style="margin-bottom: 24px">
+          <!-- 1. Септик -->
+          <div
+            class="gallery-item"
+            data-title="Викачування септика у приватному секторі"
+            data-desc="Робота виконана за допомогою потужної асенізаторської машини у приватному секторі Харкова."
+            style="cursor: pointer;"
+          >
+            <div style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
               <img
                 src="img/septic_zamisk_bud.jpg"
                 alt="Викачування септика у приватному секторі Харкова"
                 loading="lazy"
+                style="width: 100%; height: 220px; object-fit: cover; display: block;"
               />
-              <strong>Септик заміського будинку</strong>
-              <span>Натисніть для перегляду</span>
             </div>
-            <div
-              class="photo-placeholder gallery-item"
-              data-title="Очищення КНС мулососом"
-              data-desc="Повне видалення мулових відкладень та промивка станції."
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <strong>Очищення КНС</strong>
-              <span>Натисніть для перегляду</span>
-            </div>
-            <div
-              class="photo-placeholder gallery-item"
-              data-title="Обслуговування автомийки"
-              data-desc="Відкачування пісковловлювачів та жировловлювачів."
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <strong>Автомийка</strong>
-              <span>Натисніть для перегляду</span>
-            </div>
+            <strong>Септик заміського будинку</strong>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 4px 0 0;">Натисніть для перегляду</p>
           </div>
-          <div style="text-align: center">
-            <a href="photo.html" class="btn btn--outline"
-              >Переглянути всі фото (Галерея)</a
-            >
+
+          <!-- 2. Очищення КНС  -->
+          <div
+            class="gallery-item"
+            data-title="Очищення КНС мулососом"
+            data-desc="Повне видалення мулових відкладень та промивка станції."
+            style="cursor: pointer;"
+          >
+            <div style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
+              <img
+                src="img/kns.jpg"
+                alt="Очищення КНС та мулових відкладень у Харкові"
+                loading="lazy"
+                style="width: 100%; height: 220px; object-fit: cover; display: block;"
+              />
+            </div>
+            <strong>Очищення КНС</strong>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 4px 0 0;">Натисніть для перегляду</p>
+          </div>
+
+          <!-- 3. Автомийка (заглушка або наступне фото) -->
+          <div
+            class="photo-placeholder gallery-item"
+            data-title="Обслуговування автомийки"
+            data-desc="Відкачування пісковловлювачів та жировловлювачів."
+            style="cursor: pointer;"
+          >
+            <div style="height: 220px; display: flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 8px; margin-bottom: 8px;">
+              <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <strong>Автомийка</strong>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 4px 0 0;">Натисніть для перегляду</p>
           </div>
         </div>
-      </section>
+        <div style="text-align: center;">
+          <a href="photo.html" class="btn btn--outline">Переглянути всі фото (Галерея)</a>
+        </div>
+      </div>
+    </section>
 
       <!-- 9. Відгуки клієнтів -->
       <section class="section section--alt">
