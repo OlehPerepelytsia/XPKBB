@@ -218,26 +218,19 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------------
      6. Лайтбокс для фотогалереї
      ------------------------------------------------------------------------ */
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxTitle = document.getElementById('lightbox-title');
-  const lightboxDesc = document.getElementById('lightbox-desc');
-  const lightboxClose = document.querySelector('.lightbox__close');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const title = item.getAttribute('data-title');
+      const desc = item.getAttribute('data-desc');
+      const imgSrc = item.querySelector('img').getAttribute('src'); // Отримуємо шлях до картинки
 
-  if (galleryItems.length && lightbox) {
-    galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
-        lightboxTitle.textContent = item.dataset.title || 'Фото виконаних робіт ХРКВВ';
-        lightboxDesc.textContent = item.dataset.desc || '';
-        lightbox.classList.add('is-open');
-      });
-    });
+      document.getElementById('lightbox-title').textContent = title;
+      document.getElementById('lightbox-desc').textContent = desc;
+      document.getElementById('lightbox-img').src = imgSrc; // Вставляємо картинку в лайтбокс
 
-    lightboxClose.addEventListener('click', () => lightbox.classList.remove('is-open'));
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('is-open');
+      document.getElementById('lightbox').classList.add('active'); // або ваш клас відкриття
     });
-  }
+  });
 
   /* ------------------------------------------------------------------------
      7. Плавна поява блоків при скролі
